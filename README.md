@@ -33,6 +33,9 @@ The project structure is designed to be modular and easy to navigate. Here's a b
 ├── Dockerfile
 ├── requirements.txt
 ├── README.md
+├── .gitignore
+├── .env.example
+├── requirements.txt
 └── CONTRIBUTING.md
 ```
 ## Tasks
