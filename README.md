@@ -25,16 +25,11 @@ The project structure is designed to be modular and easy to navigate. Here's a b
 
 ```llm-evals-deployment/
 ├── tasks/
-│   ├── task_one_api_endpoint.md    
-│   ├── task_two_dockerize_app.md
-│   ├── task_three_refactor_cloud_services.md
-│   └── task_four_deploy_to_aws.md
-├── src/
-│   ├── main.py
-│   ├── api/
-│   ├── services/
-│   ├── models/
-│   └── utils/
+│   ├── task_one.md    
+│   ├── task_two.md
+│   ├── task_three.md
+│   └── task_four.md
+├── main.py
 ├── Dockerfile
 ├── requirements.txt
 ├── README.md
