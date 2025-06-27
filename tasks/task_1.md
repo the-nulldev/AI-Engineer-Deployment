@@ -47,7 +47,7 @@ model_list:
       api_key: os.environ/<another_actual_api_key> # does os.getenv("another_actual_api_key") to get your actual API key
       num_retries: 5 
       mode: embedding
-			
+      
 litellm_settings: # module level litellm settings - https://github.com/BerriAI/litellm/blob/main/litellm/__init__.py
   drop_params: True
   success_callback: ["langfuse"] # OPTIONAL - if you want to start sending LLM Logs to Langfuse. Make sure to set `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` in your env
