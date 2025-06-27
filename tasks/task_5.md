@@ -124,11 +124,15 @@ You have completed this task when:
 ### **Useful Resources**
 
 ### **Topics**
-
+If you're new to AWS, you can start with the following topics on Hyperskill and their prerequisites:
+- [The AWS Management Console](https://hyperskill.org/learn/step/39474)
+- [EC2 Basics](https://hyperskill.org/learn/step/41843)
+- [Launching an EC2 Instance](https://hyperskill.org/learn/step/45458)
+- [Connecting to an EC2 Instance](https://hyperskill.org/learn/step/47674)
+- [Introduction to Serverless Computing](https://hyperskill.org/learn/step/47673)
 ### **Docs**
 
 - [AWS Free Tier](https://aws.amazon.com/free/)
 - [Getting started WITH Amazon ECR](https://aws.amazon.com/ecr/getting-started/)
 - [Deploying a FastAPI App to AWS Lambda](https://mangum.fastapiexpert.com/)
-
-### **Other useful articles**
+- [Build and push your first image](https://docs.docker.com/get-started/introduction/build-and-push-first-image/)
