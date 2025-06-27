@@ -6,9 +6,7 @@
 - [Recommended Development Steps](#recommended-development-steps)
 - [Deliverables](#deliverables)
 - [Useful Resources](#useful-resources)
-    - [Topics](#topics)
     - [Docs](#docs)
-    - [Other useful articles](#other-useful-articles)
 
 ### Description
 
@@ -57,7 +55,7 @@ docker run --env-file .env -p 8000:8000 custom-image:latest
 
 The final thing to consider is how your run the web server. In our code, we are running it with `uvicorn` as follows:
 
-```bash
+```python
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
 ```

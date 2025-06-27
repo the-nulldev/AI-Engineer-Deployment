@@ -24,7 +24,7 @@ Once you’ve created accounts on those platforms ([Qdrant](https://cloud.qdrant
 
 Next, can generate an API key and note the endpoint URL you will use for the Qdrant client. Now that you have the cluster, you need to upload your data. When you run the application for the first time, the `embed_documents()` function will create the store for you. Alternatively, you can create a snapshot from your local installation and upload it via the cluster UI. Then, update your `embed_documents()` function to retain only the necessary parts:
 
-```bash
+```python
 collection_exists = qdrant_client.collection_exists(collection_name=collection_name)
 if collection_exists:
   qdrant_store = QdrantVectorStore.from_existing_collection(

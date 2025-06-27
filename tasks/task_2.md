@@ -12,7 +12,7 @@
 
 Usually, we want to integrate AI capabilities into our existing applications. Imagine that the frontend team has already created the UI:
 
-![image.png](attachment:e03795a5-9d42-4373-becc-5ed4065ea295:0fab2078-4a00-4957-ba91-3e42a19140c6.png)
+![Frontend UI](../images/UI.png)
 
 Also, the backend team has added the remaining application logic, enabling users to create accounts, order smartphones, and access other features. During sign-up, users are also assigned keys in LiteLLM behind the scenes. This ensures they already have an LLM usage budget linked to their account.
 
@@ -24,7 +24,7 @@ Therefore, we need to implement the API endpoint to which the main application c
 
 Your task is to use FastAPI to implement the API endpoint `/ask`. The application should remain the same (monitoring, evaluations, guardrails, and budgets all remain unchanged). However, instead of sending queries using the CLI, the application should run as a web service that we can send requests to and receive responses:
 
-```bash
+```python
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
