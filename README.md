@@ -64,11 +64,11 @@ The project is divided into various tasks that you need to complete. The tasks a
 
 ## **Useful Resources**
 
-Each task contains a collection of resources that will be helpful for you as you solve the task. There are links to topics in Hyperskill, documentation, and other helpful tutorials that you and your team can use. You may not always need to use all the provided resources if you're already familiar with the concepts. In addition to the provided resources, you can always discuss with your teammates and experts. You can use various channels — GitHub Issues, GitHub Discussions, PRs, or Discord.
+Each task contains a collection of resources that will be helpful for you as you solve the task. There are links to topics in Hyperskill, documentation, and other helpful tutorials that you can use. You may not always need to use all the provided resources if you're already familiar with the concepts. In addition to the provided resources, you can always discuss with your teammates and experts. You can use various channels — GitHub Issues, GitHub Discussions, PRs, or Discord.
 
 ## **Deliverables**
 
-Each task contains a set of deliverables that bring you close to achieving the final goal. The final product is an LLM application that is accessible from anywhere. Additionally, a Docker image for your application in a public container registry of your choice (you can still delete it afterward).
+Each task contains a set of deliverables that bring you close to achieving the final goal. The final product is an LLM application that is accessible from anywhere. Additionally, a Docker image for your application in a public container registry of your choice (you can still delete it afterward). Add the link to the image in the About section of the repo found on the right side of the repo page. 
 
 ## **Contributing**
 
