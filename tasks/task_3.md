@@ -1,26 +1,65 @@
-## Refactoring to Cloud Services
+## **Refactoring to Cloud Services**
 
-### Description
+## **Table of Contents**
 
-So far, your application has been communicating locally with various services and components. Your vector and Redis databases and also Langfuse. Since you're doing everything locally in your development environment, communication is easy — they just need to communicate over your local network. 
-However, after moving to a production environment, this will not be possible. Additionally, you need to handle aspects such as scaling and fault tolerance as you'll, hopefully, be receiving a lot of traffic from interested customers.
+- [Description](#description)
+- [Recommended Development Steps](#recommended-development-steps)
+- [Deliverables](#deliverables)
 
-If you don't have the infrastructure to run everything in a local data center,  you would use cloud services. Cloud services come in many flavors. You can use a public cloud like AWS or Azure and create instances for your infrastructure. This gives you control over your applications, but the setup process and maintenance can be complex.
+### **Description**
 
-On the other hand, you can utilize SaaS (Software as a Service) and PaaS (Platform as a Service) solutions. These allow you to access cloud services without doing much of the heavy lifting. Your SaaS provider will take care of managing the infrastructure, upgrades, scaling, patches, and other operations. While these cloud models are easy to set up, you have no control over the infrastructure. This may not be ideal for data-sensitive workloads.
+So far,your application has been communicating locally with various services and components—your vector and Redis databases, as well as Langfuse. Since you're doing everything locally in your development environment, communication is easy — your app can just access them over your local network. However, moving to a production environment, this may not be possible (unless you host them in your on-prem servers). Additionally, you need to handle aspects such as scaling and fault tolerance as you'll, hopefully, be receiving a lot of traffic from customers.
 
-In this stage, you'll refactor your app to use cloud services instead of the local setup we've been using so far. Note that it is possible to move our entire setup to a public cloud, such as using AWS EC2 instances. However, to keep the setup simple, we will use managed services. We’ll use Qdrant Cloud, Redis Cloud, and Langfuse Cloud. If you used the Litellm proxy for cost management, try experimenting with using EC2/ECS instances or a cloud provider like [Render](https://render.com/deploy?repo=https://github.com/BerriAI/litellm).
+If you don't have the infrastructure to run services locally, you would use cloud services, which come in many flavors. You can use a public cloud like AWS or Azure and create instances for your infrastructure. This gives you the most control, but the setup process and maintenance can be complex.
 
-Once you’ve created accounts on those platforms, you will receive an API key and endpoint URL. Next, update your .env so that your code uses the new API keys and URLs. Note that the code will not change, but the environment setup will change. The code will now use the new API keys and URLs to communicate with the cloud services. Note that there is also additional setup you need to do. For example, for Qdrant, you will also need to create a collection and upload your data. 
+On the other hand, you can utilize SaaS (Software as a Service) and PaaS (Platform as a Service) solutions. These allow you to access cloud services without doing much of the heavy lifting. Your PaaS provider will handle managing the infrastructure, upgrades, scaling, patches, and other tasks.  While these cloud models are easy to set up, you have no control over the platform. This may not be ideal for data-sensitive workloads.
 
-### Objectives
+### **Recommended Development Steps**
 
-In this task, your work is to set up accounts you can use to access managed services for your application. All these services offer a free plan that should be enough for you to get started. The “Useful resources” section contains resources that will help you set things up.
+In this stage, you'll refactor your app to use cloud services instead of the local setup we've been using so far. Note that it is possible to move our entire setup to a public cloud, such as using AWS EC2 instances and Docker containers. However, to keep the setup simple, we will use managed services. We’ll use Qdrant Cloud, Redis Cloud, and Langfuse Cloud. For the Litellm proxy, we’ll use EC2 instances later. If you want, you can try experimenting with a cloud provider like [Render](https://render.com/deploy?repo=https://github.com/BerriAI/litellm).
 
-### Deliverables
+Once you’ve created accounts on those platforms ([Qdrant](https://cloud.qdrant.io/), [Redis](https://redis.io/cloud/), [Langfuse](https://cloud.langfuse.com/)) the next step is to set things up. For Qdrant, start by creating a free tier cluster:
 
-Your code may or may not change. However, your environment set up will change because now your application will be using different access keys and host parameters.
+![Qdrant UI](../images/qdrant.png)
 
-### Docs
+Next, can generate an API key and note the endpoint URL you will use for the Qdrant client. Now that you have the cluster, you need to upload your data. When you run the application for the first time, the `embed_documents()` function will create the store for you. Alternatively, you can create a snapshot from your local installation and upload it via the cluster UI. Then, update your `embed_documents()` function to retain only the necessary parts:
 
-### Other useful articles
+```bash
+collection_exists = qdrant_client.collection_exists(collection_name=collection_name)
+if collection_exists:
+  qdrant_store = QdrantVectorStore.from_existing_collection(
+        url=os.environ["QDRANT_URL"],
+        api_key=os.environ["QDRANT_API_KEY"],
+        embedding=embeddings_model,
+        collection_name=collection_name,
+    )
+
+    return qdrant_store
+```
+
+For Redis, all you need to do is create a database. Then, click “Connect” to see various ways to connect to the database:
+
+![Redis](../images/redis.png)
+
+One way is to use the database connection string that looks like this:
+
+```bash
+redis://<username>:<password>@<public_endpoint>:<port>/<database>
+```
+
+You can view it in full from the Redis CLI connection method (use database `0`). Then, use it in your code:
+
+```python
+REDIS_URL = os.environ["REDIS_CONN_STRING"]
+
+def get_redis_history(session_id: str) -> BaseChatMessageHistory:
+    return RedisChatMessageHistory(session_id, redis_url=REDIS_URL, ttl=3600)
+```
+
+Using a database client, you can see the chat history in your Redis database. Finally, for Langfuse, all you need to do is create a new organization, project, and generate public and private keys. Then, set the `LANGFUSE_HOST` key to `https://cloud.langfuse.com`. You should now see traces in your Langfuse cloud instance:
+
+![Langfuse](../images/langfuse.png)
+
+### **Deliverables**
+
+At this point, your application should be using cloud providers for your vector and Redis databases, as well as Langfuse.

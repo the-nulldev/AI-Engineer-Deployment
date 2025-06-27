@@ -1,125 +1,88 @@
-# Collaborating on the Project
+# **Collaborating on the Project**
 
-## Table of Contents
+## **Table of Contents**
 
-- [Prerequisites](#prerequisites)
+- Prerequisites
 - [Basic knowledge of Git (clone, commit, push, pull)](#basic-knowledge-of-git-clone-commit-push-pull)
-    - [Create the Repository](#create-the-repository---one-student-or-the-teacher-should)
-    - [Clone the Repository](#clone-the-repository)
-    - [Create a New Branch for Your Work](#create-a-new-branch-for-your-work)
-    - [Make Your Changes Locally](#make-your-changes-locally--implement-your-feature-or-fix-use-meaningful-commit-messages)
-    - [Push Your Branch to GitHub](#push-your-branch-to-github)
-    - [Open a Pull Request (PR)](#open-a-pull-request-pr-this-is-a-request-to-merge-your-changes-into-the-main-branch)
-    - [Review Each Other's Code](#review-each-others-code)
-    - [Sync with Main Branch Regularly](#sync-with-main-branch-regularly)
-    - [Avoid Merge Conflicts](#avoid-merge-conflicts)
-- [GitHub Repository Deliverable](#github-repository-deliverable-github-repo-with)
+- [GitHub Repository Deliverable](#deliverables)
 - [Best Practices](#best-practices)
 
-## Prerequisites
+## **Prerequisites**
 
 - A GitHub account.
 - Git installed on your computer.
 
-## Basic knowledge of Git (clone, commit, push, pull).
+## **Basic knowledge of Git (clone, commit, push, pull).**
 
-1. Create the Repository - One student (or the teacher) should:
-
-- Create a new GitHub repository (e.g. llm-evals-deployment).
-- Add collaborators in Settings > Collaborators (if using a private repo).
-
-2. Clone the Repository- Each team member should clone the repository to their local machine:
+1. Create or fork this repository in your account:
+- Create a new GitHub repository (e.g., deploying-llm-applications).
+- Add collaborators in “Settings > Collaborators" (if using a private repo) so that we have access to it.
+2. Clone the forked repo to your local machine:
 
 ```bash
-git clone https://github.com/username/llm-evals-deployment.git
-cd llm-evals-deployment
+git clone https://github.com/username/deploying-llm-applications.git
+cd deploying-llm-applications
 ```
 
-3. Create a new branch for your work -- always create a new branch to work on a specific feature or task.
+3. Create a new branch for your work — always create a new branch to work on a specific feature or task. Use descriptive prefixes for your branch names like `feature/`,  `bugfix/`,  or `refactor/`:
 
 ```bash
 git checkout -b feature/add-fastapi-endpoint
 ```
 
-Use descriptive names like feature/, bugfix/, or refactor/.
+4. In case you have uncommitted changes you don’t want to lose when creating or switching between branches, you can stash them first:
 
-4. Make your changes locally — implement your feature or fix. Use meaningful commit messages.
+```bash
+git stash
+```
+
+- You can then reapply your stashed changes:
+
+```bash
+git stash apply
+```
+
+5. Make your changes locally — implement your feature or fix, and commit your changes using meaningful commit messages:
 
 ```bash
 git add .
 git commit -m "Add FastAPI /ask endpoint"
 ```
 
-5. Push Your Branch to GitHub
+6. Push your changes to GitHub:
 
 ```bash
 git push origin feature/add-fastapi-endpoint
 ```
 
-6. Open a Pull Request (PR). This is a request to merge your changes into the main branch.
-
-- Go to GitHub and:
+7. Open a pull request (PR). This is a request to merge your changes into the main branch.
+- You can open a PR from the IDE (via [GitHub plugin](https://plugins.jetbrains.com/plugin/13115-github)) or go to GitHub and:
     - Click Compare & pull request.
     - Write a clear title and description:
         - What the PR is about — that is, what does it address?
         - How you went about solving the problem and why you chose that approach (this usually makes it easier for the reviewer to know why you did what)
-        - Add labels like "enhancement", "bugfix", etc. — these specify what the PR is about at a glance, allow categorizations, prioritization, and can also be used to trigger automations like in CI/CD pipelines.
-
-7. Review Each Other's Code
-
-- Go to the Pull Request tab.
-    - Click on the PR you want to review.
+        - Add labels like "enhancement", "bugfix", etc. — these specify what the PR is about at a glance, allow categorization and prioritization, and can also be used to trigger automation, such as in CI/CD pipelines.
+8. Code review:
+- We will:
     - Check the "Files changed" tab to see what has been modified.
     - Read the code and comment if needed.
-    - If necessary, run the code locally to test it.
-    - If you find issues, leave comments on specific lines.
-    - If everything looks good, approve the PR.
-    - Click on the "Review changes" button and select one of the options:
-        - Approve: If everything is fine.
-        - Request changes: If you find issues that need to be fixed.
-        - Comment: If you have questions or suggestions but don't want to block the merge.
-    - When ready, click Merge to add it to the main branch.
+    - Run the code locally to test its functionality.
+    - Pull your Docker image and run it locally.
+    - Check your app’s API endpoints.
+    - If we find issues, we will leave comments on specific lines.
+    - If everything looks good, we will approve the PR.
 
-8. Sync with Main Branch Regularly
+### Deliverables
 
-- Before starting new work:
+GitHub repo with:
 
-```bash
-git checkout main
-git pull origin main
-```
-
-- This ensures you have the latest changes from the `main` branch.
-- If you have uncommitted changes, stash them first:
-
-```bash
-git stash
-```
-- Then create a new branch from up-to-date `main`.
-- After pulling, you can reapply your stashed changes:
-
-```bash
-git stash apply
-```
-
-9. Avoid Merge Conflicts
-
-- Communicate regularly.
-- Don’t work on the same files in parallel.
-- Pull and push often.
-
-10. GitHub repository deliverable. GitHub repo with:
-
-- Final code solution in the `main` branch.
+- Final code solution, `Dockerfile`, and other files in the `main` branch.
 - At least three merged pull requests.
-- At least five closed Issues linked to PRs or labeled as `wonfix/invalid`.
 
-## Best Practices
-
+## **Best Practices**
 - Use meaningful commit messages.
 - Use branches for features, bug fixes, or experiments.
 - Use descriptive names for branches (e.g., feature/add-dockerfile, bugfix/fix-api-endpoint).
 - Keep Pull Requests small and focused.
-- Review before merging.
 - Don't commit .idea/ or build/ directories.
 - Use .gitignore properly.
