@@ -4,11 +4,10 @@
 - [Learning Outcomes](#learning-outcomes)
 - [Project Structure](#project-structure)
 - [Tasks](#tasks)
-  - [Task One — Managing API Keys with LiteLLM Proxy](./tasks/task_1.md)
-  - [Task Two — API Endpoint](./tasks/task_2.md)
-  - [Task Three — Refactor to Cloud Services](./tasks/task_3.md)
-  - [Task Four — Production-ready Docker Image](./tasks/task_4.md)
-  - [Task Five — Deployment to AWS](./tasks/task_5.md)
+  - [Task One — API Endpoint](tasks/task_1.md)
+  - [Task Two — Refactor to Cloud Services](tasks/task_2.md)
+  - [Task Three — Production-ready Docker Image](tasks/task_3.md)
+  - [Task Four — Deployment to AWS](tasks/task_4.md)
 - [Deliverables](#deliverables)
 - [Useful Resources](#useful-resources)
 - [Contributing](#contributing)
@@ -56,11 +55,10 @@ Here are the main directories and files in this repo:
 
 The project is divided into various tasks that you need to complete. The tasks are located in the tasks folder of the repository. Each task includes all the necessary objectives, suggested development steps, deliverables, and useful resources. Here's a brief overview of each task:
 
-- **Task One — Managing API Keys and Budgets via LiteLLM Proxy:** Use LiteLLM to manage your API keys, set budgets per user per key, enforce rate limits, and more.
-- **Task Two — API Endpoint:** Create a REST API endpoint with FastAPI that handles `POST` requests and returns a response from the LLM.
-- **Task Three — Refactor to Cloud Services**: Use SaaS providers for your vector store, Redis, and Langfuse, instead of self-hosting them.
-- **Task Four  — Production-ready Docker Image**: Containerize the FastAPI application using Docker to ensure it runs consistently across different environments.
-- **Task Five — Deployment to AWS**: Deploy the application to AWS using AWS EC2 Instances.
+- **Task One — API Endpoint:** Create a REST API endpoint with FastAPI that handles `POST` requests and returns a response from the LLM.
+- **Task Two — Refactor to Cloud Services**: Use SaaS providers for your vector store, Redis, and Langfuse, instead of self-hosting them.
+- **Task Three  — Production-ready Docker Image**: Containerize the FastAPI application using Docker to ensure it runs consistently across different environments.
+- **Task Four — Deployment to AWS**: Deploy the application to AWS using AWS EC2 Instances.
 
 ## **Useful Resources**
 
