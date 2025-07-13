@@ -23,7 +23,7 @@ You already have an LLM app that is prepared for production. You did monitoring,
 
 ## **Learning Outcomes**
 
-We cover deploying LLM applications in a production-ready environment. You'll use tools and services like LiteLLM for API key management, FastAPI for creating REST API endpoints, Docker for containerization, SaaS providers for various services, and AWS Cloud to ship and share what you've been building.
+We cover deploying LLM applications in a production-ready environment. You'll use tools and services like FastAPI for creating REST API endpoints, Docker for containerization, SaaS providers for various services, and AWS Cloud to ship and share what you've been building.
 
 ## **Project Structure**
 
